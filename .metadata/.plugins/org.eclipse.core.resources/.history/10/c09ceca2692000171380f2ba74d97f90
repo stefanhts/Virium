@@ -1,0 +1,25 @@
+package Popup;
+
+import javax.swing.JFrame;
+
+public class MainFunction {
+	
+	public void main(String[] args) {
+
+			
+			
+			
+			
+			
+		System.out.println("fdjkjfk");
+
+		}
+public void close(boolean check){
+	CreatePopUp window = new CreatePopUp("ERROR");
+	if(check==true){
+	window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);}
+	else{window.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);}
+}
+	}
+
+

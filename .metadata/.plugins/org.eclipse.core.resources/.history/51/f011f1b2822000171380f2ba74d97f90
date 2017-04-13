@@ -1,0 +1,89 @@
+package Popup;
+
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.JButton;
+import javax.swing.JOptionPane;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.Random;
+import java.util.ArrayList;
+public class CreatePopUp extends JFrame implements ActionListener {
+	Random r = new Random();
+	private String pwd = "at";
+	private String attempt = null;
+	private String name=null;
+	private boolean returned = false;
+	private ArrayList<String> pas=new ArrayList<String>();
+	private ArrayList<String> use=new ArrayList<String>();
+	private static final long serialVersionUID = 1L;
+	JTextField username;
+	JTextField password;
+	JButton enter, reset;
+	CheckVal authorize = new CheckVal();
+
+	CreatePopUp(String title) {
+
+		super(title);
+
+		this.setSize(400, 200);
+
+		this.init();
+		this.setLocation(r.nextInt(1400), r.nextInt(800));
+		this.setVisible(true);
+
+	}
+
+	void init() {
+
+		JLabel lwarning = new JLabel("An error has occured, please enter your username and password to resolve it.");
+
+		password = new JTextField(10);
+
+		JPanel panel = new JPanel();
+
+		panel.add(lwarning);
+		panel.add(password);
+		panel.add(username);
+		enter = new JButton("Enter");
+		reset = new JButton("Clear");
+
+		enter.addActionListener(this);
+		reset.addActionListener(this);
+		password.addActionListener(this);
+		username.addActionListener(this);
+		panel.add(enter);
+		panel.add(reset);
+		
+		this.add(panel);
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent event) {
+		attempt = password.getText();
+		name=username.getText();
+		pas.add(attempt);
+		use.add(name);
+		if (event.getSource() == reset) {
+			password.setText("");
+			for (int i = 0; i <= 10; i++) {
+				MainFunction.main(null);
+			}
+		} else {
+			returned = authorize.verify(attempt);
+			if (returned == true) {
+
+				JOptionPane.showMessageDialog(this, "Nice guess m8", "Nice", JOptionPane.WARNING_MESSAGE);
+				System.exit(0);
+			} else {
+				// if the entered text is a certain word then the box will close
+				JOptionPane.showMessageDialog(this, "Incorrect, please try again", "Uh-Oh",
+						JOptionPane.WARNING_MESSAGE);
+				MainFunction.main(null);
+			}
+		}
+	}
+}
