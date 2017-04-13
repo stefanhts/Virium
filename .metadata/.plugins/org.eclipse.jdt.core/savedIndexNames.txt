@@ -1,0 +1,2 @@
+INDEX VERSION 1.127+C:\Users\Stefan\Documents\GitHub\Virium\.metadata\.plugins\org.eclipse.jdt.core
+1757007651.index
