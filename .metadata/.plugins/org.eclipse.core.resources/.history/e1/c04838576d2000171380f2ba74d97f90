@@ -1,0 +1,11 @@
+package Popup;
+import Popup.CreatePopUp;
+import Popup.MainFunction;
+public class Run {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+			MainFunction.checking(false);
+	}
+
+}

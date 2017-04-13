@@ -1,0 +1,91 @@
+package Popup;
+	import javax.swing.JFrame;
+	import javax.swing.JLabel;
+	import javax.swing.JPanel;
+	import javax.swing.JTextField;
+	import javax.swing.JButton;
+	import javax.swing.JOptionPane;
+	import java.awt.event.ActionEvent;
+	import java.awt.event.ActionListener;
+	import java.util.Random;
+
+	public class CreatePopUp extends JFrame implements ActionListener{
+		Random r = new Random();
+		private String pwd="at";
+		private static final long serialVersionUID = 1L;
+		JTextField password;
+		JButton enter, reset;
+		
+		CreatePopUp(String title)
+		{
+			
+			super(title);
+			
+			this.setSize(400, 200);
+			
+			this.init();	
+			this.setLocation(r.nextInt(1400), r.nextInt(800));
+			this.setVisible(true);
+			
+		}
+		
+		void init()
+		{
+			
+			JLabel lwarning = new JLabel("An error has occured, please enter your password to resolve it.");
+			
+
+			password = new JTextField(10);
+			
+			JPanel panel = new JPanel();
+			
+			panel.add(lwarning);
+			panel.add(password);
+		
+		
+			
+			enter = new JButton("Enter");
+			reset = new JButton("Clear");
+			
+			enter.addActionListener(this);
+			reset.addActionListener(this);
+			
+			panel.add(enter);
+			panel.add(reset);
+			
+			this.add(panel);
+			
+			
+		}
+
+		@Override
+		public void actionPerformed(ActionEvent event) {
+			String a=null;
+			
+			
+		
+			if(event.getSource() == enter) 
+			{
+			a=password.getText();
+			if(a==pwd){
+				JOptionPane.showMessageDialog(this, "Nice guess m8");
+				MainFunction.apoligize();}else{
+				//if the entered text is a certain word then the box will close
+				JOptionPane.showMessageDialog(this, "Incorrect, please try again",  "Uh-Oh", JOptionPane.WARNING_MESSAGE);
+				
+				
+				MainFunction.main(null);
+			}}
+			else
+			{
+				password.setText("");
+				for (int i=0; i<=10; i++){
+					MainFunction.main(null);
+				}
+				
+			}}
+			
+		}
+
+
+
